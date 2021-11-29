@@ -19,7 +19,6 @@
   -4 + 11 = 7 == 10 ?
   -1 + 11 = 10 == 10 ?
 */
-const arr = [3, 6, -4, 8, 11, 1, -1, 6];
 
 function twoNumberSumW1(arr, targetSum) {
   for (var i = 0; i < arr.length - 1; i++) {
@@ -35,14 +34,13 @@ function twoNumberSumW1(arr, targetSum) {
 }
 
 function twoNumberSumW2(arr, targetSum) {
-  let nums = {};
+  var nums = {};
   for (var num in arr) {
     potentialMatch = targetSum - arr[num];
     if (potentialMatch in nums) {
-      console.log([potentialMatch, arr[num]]);
-      return;
+      return [potentialMatch, arr[num]];
     } else {
-      nums[num] = true;
+      nums[arr[num]] = true;
     }
   }
   return [];
@@ -50,8 +48,10 @@ function twoNumberSumW2(arr, targetSum) {
 
 // const start = Date.now();
 // console.log("starting timer...");
-twoNumberSumW2(arr, 13);
-// console.log(twoNumberSumW1(arr, 10));
+const arr = [3, 6, -4, 8, 11, 1, -1, 6];
+// twoNumberSumW1(arr, 12);
+// console.log(twoNumberSumW1(arr, 19));
+console.log(twoNumberSumW2(arr, 19));
 // setTimeout(() => {
 //   const millis = Date.now() - start;
 //   console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);

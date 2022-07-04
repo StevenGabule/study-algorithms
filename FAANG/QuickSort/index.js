@@ -21,7 +21,7 @@ function partition(arr, begin, end) {
   var pivot = arr[end];
   var i = (begin - 1);
   for (var j = begin; j < end; j++) {
-    if (arr[j] < pivot) {
+    if (arr[j] <= pivot) {
       i++;
       var swapTemp1 = arr[i];
       arr[i] = arr[j];
@@ -36,6 +36,11 @@ function partition(arr, begin, end) {
 const nums = [2, 6, 5, 3, 8, 7, 1, 0];
 quickSort(nums, 3, 8)
 console.log(nums);
+
+/**
+ * Worst O(n2)
+ * Average nLog(n)
+ * / 
 
 // my quicksort
 // for (let idx = 0; idx < nums.length; idx++) {

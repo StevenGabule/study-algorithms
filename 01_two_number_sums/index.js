@@ -3,18 +3,18 @@
   [ 3, 5, -4, 8, 11, 1, -1, 6]
 */
 // find the pair number that sum the target number: 10
-/* Solve By Hash Table:
+/* Solve By Hash Table: [recommended]
   { 
     3: true, 5: t, -4: t, 8: t, (11): t, 1: true
   }
-  current num:x
+  current num : x
   x + y = 10;
   10 - (-1) = 11
   11 + (-1) = 10
 
   another way;
   sort the value
-  [-4,-1,1,3,5,6,8,11]
+  [-4, -1, 1, 3, 5, 6, 8, 11]
       L            R
   -4 + 11 = 7 == 10 ?
   -1 + 11 = 10 == 10 ?
@@ -33,6 +33,7 @@ function twoNumberSumW1(arr, targetSum) {
   return [];
 }
 
+// using hash map
 function twoNumberSumW2(arr, targetSum) {
   var nums = {};
   for (var num in arr) {

@@ -1,4 +1,3 @@
-
 /** 
  * @param {number[]} arr
  * @param {number} begin

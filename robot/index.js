@@ -30,8 +30,6 @@ function buildGraph(edges) {
 
 const roadGraph = buildGraph(roads);
 
-
-
 class VillageState {
 	constructor(place, parcels) {
 		this.place = place;
@@ -83,7 +81,6 @@ function randomRobot(state) {
 // console.log(next.place);   // → Alice's House
 // console.log(next.parcels); // → []
 // console.log(first.place);  // → Post Office
-
 
 VillageState.random = function (parcelCount = 5) {
 	let parcels = [];

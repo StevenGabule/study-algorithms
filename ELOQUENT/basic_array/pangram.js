@@ -1,4 +1,4 @@
-const isPangram = words => {
+const isPangram = (words) => {
   let mark = {};
   let des = true;
   let letters = words.split('').filter(v => v !== ' ').filter(d => String(d) !== '.')
@@ -8,9 +8,11 @@ const isPangram = words => {
     des = alpha.indexOf(letters[i].toLowerCase()) !== -1;
     mark[letters[i]] = des;
   }
-
+  
   for (let i = 0; i < alpha.length; i++) {
-    if(mark[alpha[i]] === false || mark[alpha[i]] === undefined) return false;
+    if(mark[alpha[i]] === false || mark[alpha[i]] === undefined) {
+      return false
+    }
   }
 
   return true;

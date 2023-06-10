@@ -28,7 +28,6 @@ console.log(removedItems); // ["Strawberry", "Mango", "Cherry"]
 * Truncate an array down to just its first N items
 * This example uses the splice() method to truncate the fruits array down to just its first 2 items.
 * */
-
 const fruits = ['Apple', 'Banana', 'Strawberry', 'Mango', 'Cherry'];
 const start = 2;
 const removedItems = fruits.splice(start);

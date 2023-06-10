@@ -6,6 +6,8 @@ function range(start, end, step) {
   return array;
 }
 
+// console.log(range(1,10,2));
+
 function sum(array = []) {
   let total = 0;
   for (let i = 0; i < array.length; i++) total += array[i];
@@ -13,6 +15,11 @@ function sum(array = []) {
 }
 
 function factorial(n) {
+  // console.log('n', n);
   if (Number(n) === 0) return 1;
-  else return factorial(n - 1) * n;
+  else {
+    console.log(`(${n} - 1) * ${n}`, (n - 1) * n);
+    return factorial(n - 1) * n;
+  }
 }
+console.log(factorial(9));

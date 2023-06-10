@@ -19,9 +19,11 @@ const checkMonotonic = (array) => {
   return true;
 }
 
-console.log(checkMonotonic([1,2,3]))
-console.log(checkMonotonic([3,3,4,5]))
-console.log(checkMonotonic([3]))
-console.log(checkMonotonic([]))
-console.log(checkMonotonic([5,4,3,2,1,-1]))
-console.log(checkMonotonic([5,4,3,2,122,-1]))
+console.log(checkMonotonic([1, 2, 3])); // T
+console.log(checkMonotonic([3, 3, 3])); // T
+console.log(checkMonotonic([1, 2, 3, 2, 1])); // F
+console.log(checkMonotonic([3, 3, 4, 5])); // T
+console.log(checkMonotonic([3])); // T
+console.log(checkMonotonic([])); // T
+console.log(checkMonotonic([5, 4, 3, 2, 1, -1])); // T
+console.log(checkMonotonic([5, 4, 3, 2, 122, -1])); // F

@@ -1,6 +1,5 @@
 function powerSum(arr, pw = 1) {
 	let sum = 0;
-
 	for (const elem of arr) {
 		if (Array.isArray(elem)) {
 			sum += powerSum(elem, pw + 1)
@@ -8,7 +7,6 @@ function powerSum(arr, pw = 1) {
 			sum += elem;
 		}
 	}
-
 	return Math.pow(sum, pw);
 }
 

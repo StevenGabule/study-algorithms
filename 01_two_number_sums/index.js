@@ -71,7 +71,6 @@ function twoNumberSumW2(arr, targetSum) {
   return [];
 }
 
-
 const givenArrayNumbers = [4, 4, -4, 8, 11, 1, -1, 6];
 console.log(twoNumberSumW2(givenArrayNumbers, 10));
 

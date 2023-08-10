@@ -1,6 +1,6 @@
 /*
 	** BubbleSort
-		** soft the elements from higher to lowest number or either l to h
+	** soft the elements from higher to lowest number or either l to h
 */
 const arr = [2, 4, 11, 5, -1, 0, 4, 13];
 // console.log(arr.sort((a,b) => a - b));

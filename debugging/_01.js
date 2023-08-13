@@ -62,11 +62,7 @@ function promptNumber(question) {
 console.log(promptNumber("How many trees do you see?"));
 
 function lastElement(array) {
-	if (array.length == 0) {
-		return { failed: true };
-	} else {
-		return { element: array[array.length - 1] };
-	}
+	return array.length === 0 ? { failed: true } : { element: array[array.length - 1] };
 }
 
 function promptDirection(question) {
@@ -77,11 +73,7 @@ function promptDirection(question) {
 }
 
 function look() {
-	if (promptDirection("Which way?") == "L") {
-		return "a house";
-	} else {
-		return "two angry bears";
-	}
+	return promptDirection("Which way?") == "L" ? "a house" : "two angry bears"; 
 }
 
 try {
@@ -91,7 +83,7 @@ try {
 }
 
 // ** Cleaning up after exceptions
-// **** Here is some really bad banking code:
+// ** Here is some really bad banking code:
 const accounts = { a: 100, b: 0, c: 20 };
 
 function getAccount() {
@@ -149,18 +141,3 @@ function firstElement(array) {
 	}
 	return array[0];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

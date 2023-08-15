@@ -4,7 +4,12 @@ Problem name: TWO NUMBER SUM
 find the pair number that sum the target number: 10
 Solve By Hash Table: [recommended]
   { 
-    3: true, 5: t, -4: t, 8: t, (11): t, 1: true
+    3: true, 
+    5: t, 
+    -4: t, 
+    8: t, 
+    (11): t, 
+    1: true
   }
   current num : x
   x + y = 10;

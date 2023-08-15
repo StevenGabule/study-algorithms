@@ -1,7 +1,7 @@
 const isPangram = (words) => {
   let mark = {};
   let des = true;
-  let letters = words.split('').filter(v => v !== ' ').filter(d => String(d) !== '.')
+  let letters = words.split('').filter(v => v !== ' ' || String(v) !== '.');
   let alpha = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
   for(let i = 0; i < letters.length; i++) {
@@ -18,5 +18,5 @@ const isPangram = (words) => {
   return true;
 }
 
-console.log(isPangram("the quick brown fox jumps over the lazy dog."));
-console.log(isPangram("this is not a pangram."));
+console.log(isPangram("the quick brown fox jumps over the lazy dog.")); // true
+console.log(isPangram("this is not a pangram.")); // false

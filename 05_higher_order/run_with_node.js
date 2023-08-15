@@ -10,9 +10,7 @@ function textScripts(text) {
   let total = scripts.reduce((n, {count}) => n + count, 0);
   if (total == 0) return "No scripts found";
 
-  return scripts.map(({name, count}) => {
-    return `${Math.round(count * 100 / total)}% ${name}`;
-  }).join(", ");
+  return scripts.map(({ name, count }) => `${Math.round(count * 100 / total)}% ${name}`).join(", ");
 }
 
 console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));

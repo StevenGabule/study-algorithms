@@ -8,11 +8,13 @@ function canYouSpotTheProblem() {
 // canYouSpotTheProblem(); // → ReferenceError: counter is not defined
 
 "use strict";
-function Person(name) {
-	this.name = name;
+class Person {
+	constructor(name) {
+		this.name = name;
+	}
 }
 
-let person = Person('John')// forgot new
+let person = new Person('John')// forgot new
 // → TypeError: Cannot set property 'name' of undefined
 // console.log(person);
 

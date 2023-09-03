@@ -211,7 +211,7 @@ function reduceAncesstors(person, f, defaultValue) {
 }
 
 function sharedDNA(person, fromMother, fromFather) {
-  if(person.name == "Pauwels van Haverbeke") return 1 
+  if(person.name === "Pauwels van Haverbeke") return 1
   else return (fromMother + fromFather) / 2;
 }
 

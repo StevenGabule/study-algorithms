@@ -154,7 +154,7 @@ function remove(array, index) {
   return array.slice(0, index).concat(array.slice(index + 1));
 }
 
-console.log(remove(['a', 'b', 'c', 'd', 'e'], 2));
+// console.log(remove(['a', 'b', 'c', 'd', 'e'], 2));
 
 // rest parameters
 function max(...numbers) {
@@ -167,13 +167,13 @@ function max(...numbers) {
 
 // console.log(max(4,1,9,-1));
 
-function randomPointOnCircle(radius) {
-  let angle = Math.random() * 2 * Math.PI;
-  return {
-    x: radius * Math.cos(angle),
-    y: radius * Math.sin(angle)
-  }
-}
+// function randomPointOnCircle(radius) {
+//   let angle = Math.random() * 2 * Math.PI;
+//   return {
+//     x: radius * Math.cos(angle),
+//     y: radius * Math.sin(angle)
+//   }
+// }
 
-console.log(randomPointOnCircle(2));
+// console.log(randomPointOnCircle(2));
 

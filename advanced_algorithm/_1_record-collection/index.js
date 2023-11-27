@@ -4,7 +4,7 @@
 const collection = {
   2991: {
     album: 'Slippery When Wet',
-    artist: 'Bon Jovi',
+    artist: 'Bon Jove',
     tracks: ['Let it rock', 'You give love a bad name'],
   },
   3991: {

@@ -8,5 +8,7 @@ function isPalindrome(str) {
   return str === strSet;
 }
 
+
+
 console.log(isPalindrome('abba'));
 console.log(isPalindrome('abba'));

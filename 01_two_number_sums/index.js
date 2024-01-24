@@ -4,12 +4,12 @@ Problem name: TWO NUMBER SUM
 find the pair number that sum the target number: 10
 Solve By Hash Table: [recommended]
   { 
-    3: true, 
+    3: t,
     5: t, 
     -4: t, 
     8: t, 
-    (11): t, 
-    1: true
+    11: t,
+    1: t
   }
   current num : x
   x + y = 10;
@@ -19,7 +19,7 @@ Solve By Hash Table: [recommended]
   another way;
   sort the value
   [-4, -1, 1, 3, 5, 6, 8, 11]
-      L            R
+        L           R
   -4 + 11 = 7 == 10 ?
   -1 + 11 = 10 == 10 ?
 */
@@ -31,7 +31,6 @@ Solve By Hash Table: [recommended]
 //     if (Array.isArray(captureCorrectValues)) return;
 //     arrNumbers.map((_, idx) => {
 //       secondEntryNumber = arrNumbers[Number(idx) + 1];
-//       console.log('cur, secondEntryNumber', cur, secondEntryNumber);
 //       if (cur + secondEntryNumber === targetValue) {
 //         captureCorrectValues = [cur, secondEntryNumber];
 //       }

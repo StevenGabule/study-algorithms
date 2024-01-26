@@ -1,5 +1,3 @@
-// @ts-check
-
 function gatherCorrelations(journal) {
   var phis = {}
   for(var entry = 0; entry < journal.length; entry++) {

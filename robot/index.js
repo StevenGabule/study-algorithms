@@ -13,7 +13,6 @@ const roads = [
 
 function buildGraph(edges) {
 	let graph = Object.create(null)
-
 	function addEdge(from, to) {
 		if (graph[from] == null) {
 			graph[from] = [to];
@@ -49,8 +48,23 @@ class VillageState {
 	}
 }
 
+let first = new VillageState(
+	"Post Office",
+	[{ place: "Post Office", address: "Alice's House" }]
+);
+let next = first.move("Alice's House");
+console.log(next.place);   // → Alice's House
+console.log(next.parcels); // → []
+console.log(first.place);  // → Post Office
+
+// ** PERSISTENT DATA
+let object = Object.freeze({value: 5});
+object.value = 10;
+console.log(object.value);
+// → 5
+
 function runRobot(state, robot, memory) {
-	for (let turn = 0; ; turn++) {
+	for (let turn = 0;; turn++) {
 		if (state.parcels.length == 0) {
 			console.log(`Done in ${turn} turns`);
 			break;
@@ -73,15 +87,6 @@ function randomRobot(state) {
 	}
 }
 
-// let first = new VillageState(
-// 	"Post Office",
-// 	[{ place: "Post Office", address: "Alice's House" }]
-// );
-// let next = first.move("Alice's House");
-// console.log(next.place);   // → Alice's House
-// console.log(next.parcels); // → []
-// console.log(first.place);  // → Post Office
-
 VillageState.random = function (parcelCount = 5) {
 	let parcels = [];
 	for (let i = 0; i < parcelCount; i++) {
@@ -95,7 +100,7 @@ VillageState.random = function (parcelCount = 5) {
 	return new VillageState("Post Office", parcels);
 }
 
-// runRobot(VillageState.random(), randomRobot);
+//runRobot(VillageState.random(), randomRobot);
 
 const mailRoute = [
 	"Alice's House", "Cabin", "Alice's House", "Bob's House",
@@ -136,5 +141,5 @@ function goalOrientedRobot({ place, parcels }, route) {
 	return { direction: route[0], memory: route.slice(1) }
 }
 
-goalOrientedRobot(VillageState.random(), randomRobot)
+// goalOrientedRobot(VillageState.random(), randomRobot)
 

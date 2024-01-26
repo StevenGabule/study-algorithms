@@ -16,46 +16,47 @@ Solve By Hash Table: [recommended]
   10 - (-1) = 11
   11 + (-1) = 10
 
-  another way;
-  sort the value
+  Another way;
+  Sort the value
   [-4, -1, 1, 3, 5, 6, 8, 11]
         L           R
   -4 + 11 = 7 == 10 ?
   -1 + 11 = 10 == 10 ?
 */
 
-// function twoNumberSumAndGetTargetValue(arrNumbers, targetValue) {
-//   let secondEntryNumber;
-//   let captureCorrectValues = null;
-//   arrNumbers.map((cur) => {
-//     if (Array.isArray(captureCorrectValues)) return;
-//     arrNumbers.map((_, idx) => {
-//       secondEntryNumber = arrNumbers[Number(idx) + 1];
-//       if (cur + secondEntryNumber === targetValue) {
-//         captureCorrectValues = [cur, secondEntryNumber];
-//       }
-//     })
-//   })
-//   return captureCorrectValues;
-// }
+function twoNumberSumAndGetTargetValue(arrNumbers, targetValue) {
+  let secondEntryNumber;
+  let captureCorrectValues = null;
+  arrNumbers.map((cur, index) => {
+    if (Array.isArray(captureCorrectValues)) return;
+    arrNumbers.map((_, idx) => {
+      secondEntryNumber = arrNumbers[idx + 1];
+      if ((cur + secondEntryNumber) === targetValue) {
+        captureCorrectValues = [index, idx + 1];
+      }
+    })
+  })
+  return captureCorrectValues;
+}
 
-// const givenArrayNumbers = [3, 6, -4, 8, 11, 1, -1, 6];
-// console.log(twoNumberSumAndGetTargetValue(givenArrayNumbers, 10));
+// const givenArrayNumbers1 = [3, 6, -4, 8, 11, 1, -1, 6];
+// console.log(twoNumberSumAndGetTargetValue(givenArrayNumbers1, 10));
+// console.log(twoNumberSumAndGetTargetValue(givenArrayNumbers1, 9));
 
-// function twoNumberSumW1(arr, targetSum) {
-//   let firstNum;
-//   let secondNum;
-//   for (let i = 0; i < arr.length - 1; i++) {
-//     firstNum = arr[i];
-//     for (let j = 0; j < arr.length; j++) {
-//       secondNum = arr[j];
-//       if (firstNum + secondNum === targetSum) {
-//         return [firstNum, secondNum];
-//       }
-//     }
-//   }
-//   return [];
-// }
+function twoNumberSumW1(arr, targetSum) {
+  let firstNum;
+  let secondNum;
+  for (let i = 0; i < arr.length - 1; i++) {
+    firstNum = arr[i];
+    for (let j = 0; j < arr.length; j++) {
+      secondNum = arr[j];
+      if (firstNum + secondNum === targetSum) {
+        return [i, j];
+      }
+    }
+  }
+  return [];
+}
 
 // const givenArrayNumbers = [4, 6, -4, 8, 11, 1, -1, 6];
 // console.log(twoNumberSumW1(givenArrayNumbers, 10));
@@ -75,8 +76,8 @@ function twoNumberSumW2(arr, targetSum) {
   return [];
 }
 
-const givenArrayNumbers = [4, 4, -4, 8, 11, 1, -1, 6];
-console.log(twoNumberSumW2(givenArrayNumbers, 10));
+// const givenArrayNumbers = [4, 4, -4, 8, 11, 1, -1, 6];
+// console.log(twoNumberSumW2(givenArrayNumbers, 10));
 
 // const start = Date.now();
 // console.log("starting timer...");

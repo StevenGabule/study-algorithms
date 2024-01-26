@@ -2,3 +2,8 @@
 .vscode
 .idea
 ELOQUENT/.idea/
+node_modules
+.env
+.env.local
+.env.stage
+.env.production

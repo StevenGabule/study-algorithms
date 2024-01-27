@@ -278,8 +278,6 @@ while (match = number.exec(input)) {
 // type=evil wizard
 // outputdir=/home/marijn/enemies/davaeorn
 
-
-
 function parseINI(string) {
 	// Start with an object to hold the top-level fields
 	let result = {};
@@ -302,9 +300,48 @@ name=Vasilis
 city=Tessaloniki`));
 // → {name: "Vasilis", address: {city: "Tessaloniki"}}
 
+console.log(/🍎{3}/.test("🍎🍎🍎"));
+// → false
+console.log(/<.>/.test("<🌹>"));
+// → false
+console.log(/<.>/u.test("<🌹>"));
+// → true 
 
 
+console.log(/\p{Script=Greek}/u.test("α"));
+// → true
+console.log(/\p{Script=Arabic}/u.test("α"));
+// → false
+console.log(/\p{Alphabetic}/u.test("α"));
+// → true
+console.log(/\p{Alphabetic}/u.test("!"));
+// → false
 
+/*
+	Summary
+	Regular expressions are objects that represent patterns in strings. They use
+	their own language to express these patterns.
+	
+	/abc/ A sequence of characters
+	/[abc]/ Any character from a set of characters
+	/[^abc]/ Any character not in a set of characters
+	/[0-9]/ Any character in a range of characters
+	/x+/ One or more occurrences of the pattern x
+	/x+?/ One or more occurrences, nongreedy
+	/x(*)/ Zero or more occurrences
+	/x?/ Zero or one occurrence
+	/x{2,4}/ Two to four occurrences
+	/(abc)/ A group
+	/a|b|c/ Any one of several patterns
+	/\d/ Any digit character
+	/\w/ An alphanumeric character (“word character”)
+	/\s/ Any whitespace character
+	/./ Any character except newlines
+	/\b/ A word boundary
+	/^/ Start of input
+	/$/ End of input
+*/ 
+ 
 
 
 

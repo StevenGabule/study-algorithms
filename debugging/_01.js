@@ -123,6 +123,36 @@ for (;;) {
 	}
 }
 
+class InputError extends Error {}
+
+function newPromptDirection(question) {
+	let result = prompt(question);
+	if(result.toLowerCase() == "left") return "L"; 
+	if(result.toLowerCase() == "right") return "R";
+	throw new Error("Invalid direction: " + result);
+}
+
+for(;;) {
+	try {
+		let dir = newPromptDirection('Where?');
+		console.log('You chose: ', dir);
+		break;
+	} catch(e) {
+		if(e instanceof InputError) {
+			console.log('Not a valid direction. Try again.');
+		} else {
+			throw e;
+		}
+	}
+}
+
+function firstElement(array) {
+	if(array.length == 0) {
+		throw new Error('First element called with []');
+	}
+	return array[0];
+}
+
 "use strict";
 class Person {
 	constructor(name) {

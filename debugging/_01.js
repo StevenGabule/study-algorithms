@@ -160,10 +160,9 @@ class Person {
 	}
 }
 
-let person = new Person('John')// forgot new
+let person = new Person('John'); // forgot new
 // → TypeError: Cannot set property 'name' of undefined
 // console.log(person);
-
 
 // Testing
 function test(label, body) {
@@ -210,7 +209,9 @@ function promptNumber(question) {
 console.log(promptNumber("How many trees do you see?"));
 
 function lastElement(array) {
-	return array.length === 0 ? { failed: true } : { element: array[array.length - 1] };
+	return array.length === 0 
+						? { failed: true } : 
+						{ element: array[array.length - 1] };
 }
 
 function promptDirection(question) {
@@ -258,7 +259,6 @@ function transfer(from, amount) {
 }
 
 // Selective catching
-
 class InputError extends Error { }
 
 function promptDirection(question) {

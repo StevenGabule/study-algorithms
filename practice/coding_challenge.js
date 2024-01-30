@@ -1,13 +1,41 @@
-function repeat(n, action) {
-  for (let i = 0; i < n; i++) {
-    action(i);
-  }
+function twoSum(arr, t) {
+	const h = {};
+	for(let i = 0; i <= arr.length; i++) {
+		const cur = t - arr[i];
+		if(cur in h) {
+			return [i, arr.indexOf(cur)]
+		} 
+		h[arr[i]] = true;
+	}
+	return [];
 }
 
-// const newRepeat = (n, action) => n.map(i => action(i))
+const nums = [3, 5, 11, 55, 6];
 
-// repeat(9, console.log);
-// newRepeat(9, console.log);
+// console.log(twoSum(nums, 60));
+// console.log(String(1234).indexOf(3));
+
+function twoSumFun(arr, targetSum) {
+	arr.sort((a,b) => a - b);
+	
+	let left = 0;
+	let right = arr.length - 1;
+	
+	while(left < right) {
+		let currentSum = arr[left] + arr[right];
+		console.log(arr[left], arr[right], currentSum)
+		if(currentSum == targetSum) {
+			return [arr[left], arr[right]];
+		} else if(currentSum < targetSum) {
+			left += 1;
+		} else if(currentSum > targetSum) {
+			right -= 1;
+		} 
+	}
+	return [];
+}
+
+// console.log(twoSumFun(nums, 60));
 
 const SCRIPTS = [
   {
@@ -1884,41 +1912,332 @@ const SCRIPTS = [
   },
 ];
 
-function characterScript(code) {
-  for (let script of SCRIPTS) {
-    if (script.ranges.some(([from, to]) => code >= from && code < to)) {
-      return script;
-    }
-  }
-  return null;
+
+function repeat(arr, action) {
+	let str = '';
+	for(const i of arr) {
+		str += `${i}, `;
+	}
+	action(str)
 }
 
-console.log(characterScript(125184));
+// repeat(nums, console.log);
+
+function characterScript(code) {
+	for(let script of SCRIPTS) {
+		if(script.ranges.some(([from, to]) => code >= from && code < to)) {
+			return script;
+		}
+	}
+	return null;
+}
+
+// console.log(characterScript(125184));
 
 function countBy(items, groupName) {
-  let counts = [];
-  for (let item of items) {
-    let name = groupName(item);
-    let known = counts.findIndex((c) => c.name === name);
-    if (known === -1) counts.push({ name, count: 1 });
-    else counts[known].count++;
-  }
-  return counts;
+	let counts = [];
+	for(let item of items) {
+		let name = groupName(item);
+		let known = counts.findIndex((c) => c.name == name)
+		if(known === -1) counts.push({name, count: 1});
+		else counts[known].count++;
+	}
+	return counts;
 }
 
 function textScripts(text) {
-  let scripts = countBy(text, (char) => {
-    let script = characterScript(char.codePointAt(0));
-    return script ? script.name : 'none';
-  }).filter(({ name }) => name !== 'none');
-
-  let total = scripts.reduce((n, { count }) => n + count, 0);
-  if (total === 0) return 'No scripts found';
-
-  return scripts.map(
-    ({ name, count }) => 
-    `${Math.round((count * 100) / total)}% ${name}`)
-      .join(', ');
+	let scripts = countBy(text, (char) => {
+		let script = characterScript(char.codePointAt(0));
+		return script ? script.name : 'none';
+	}).filter(({name}) => name !== 'none');
+	
+	let total = scripts.reduce((n, {count}) => n + count, 0);
+	if(total === 0) return 'No scripts found.';
+	
+	return scripts.map(({name, count}) => {
+		return `${Math.round(count * 100 / total)}% ${name}`;
+	}).join(', ')
 }
 
-console.log(textScripts(SCRIPTS));
+// console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
+// → 61% Han, 22% Latin, 17% Cyrillic
+
+// range 
+// start end step
+function range(start, end, step) {
+	for(let s = start; s <= end; s += step) {
+		console.log(s);
+	}
+}
+
+// console.log(range(0, 100, 2));
+
+//  sum all the elements in the array;
+function sumArr(arr) {
+	let total = 0;
+	for(const el of arr) {
+		total += el;
+	}
+	return total;
+}
+
+// console.log(sumArr(nums));
+
+function factorial(n) {
+	if(Number(n) === 0) return 1;
+	return factorial(n - 1) * n;
+}
+
+// console.log('Factorial: ', factorial(5)); // 120
+
+function factorialNew(n) {
+	let total = n;
+	
+	if(n === 0 || n === 1) return 1;
+	
+	while(n > 1) {
+		n--; 
+		total = total * n;
+	} 
+	return total;
+}
+
+// console.log('Factorial: ',factorialNew(5)); // 120
+
+
+const collection = {
+  2991: {
+    album: 'Slippery When Wet',
+    artist: 'Bon Jove',
+    tracks: [
+      'Let it rock', 
+      'You give love a bad name'
+    ],
+  },
+  3991: {
+    album: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette'],
+  },
+  2391: {
+    artist: 'Robert Palmer',
+    tracks: [],
+  },
+  2491: {
+    album: 'ABBA Gold',
+  },
+};
+
+function updateRecords(id, p, v) {
+	if(p === 'tracks' && v !== '') {
+		if(collection[id][p]) {
+			collection[id][p].push(v);
+		} else {
+			collection[id][p] = v;
+		}
+	} else if(v !== '') {
+		collection[id][p] = v;
+	} else {
+		delete collection[id][p];
+	}
+	return collection;	
+}
+
+// console.log(updateRecords(2991, 'album', 'loose goose'));
+// console.log(updateRecords(2991, 'tracks', 'New Game of the thrones'));
+// console.log(updateRecords(2491, 'tracks', 'New Game of the thrones 2'));
+// console.log(updateRecords(3991, 'artist', 'Prince Sum 21'));
+// console.log(updateRecords(2391, 'artist', 'Michael jackson'));
+// console.log(updateRecords(2491, 'album', 'hotel california'));
+
+function addToUpOne(n) {
+	let total = 0;
+	for(let i = 1; i <= n; i++) {
+		total += i;
+	}
+	return total;
+}
+
+function addToUpTwo(n) {
+	return n * (n + 1) / 2;
+}
+
+// console.log(addToUpOne(10));
+// console.log(addToUpTwo(10));
+
+// console.log(addToUpOne(20));
+// console.log(addToUpTwo(20));
+
+let anObject = {left: 1, right: 1};
+if('left' in anObject) {
+	// console.log(true);
+}
+
+// console.log(Object.keys(anObject))
+
+Object.assign(anObject, {a: 1, b: 2})
+Object.assign(anObject, {c: 21, d: 5})
+Object.assign(anObject, {
+	helloWorld: function() {
+		return 'Hello world'
+	},
+	name: function(inp) {
+		return `${inp} ${this.c}`;
+	}
+});
+// console.log(anObject);
+// console.log(anObject.name('john'));
+
+let object1 = { value: 10 };
+let object2 = object1;
+let object3 = { value: 10 };
+
+// console.log(object1 == object2); // → true
+// console.log(object1 == object3); // → false
+
+// object1.value = 15;
+// console.log(object2.value); // → 15
+// console.log(object3.value); // → 10
+
+let JOURNAL = [
+  { events: ['carrot', 'exercise', 'weekend'], squirrel: false },
+  { events: ['bread', 'pudding', 'brushed teeth', 'weekend', 'touched tree'], squirrel: false },
+  { events: ['carrot', 'nachos', 'brushed teeth', 'cycling', 'weekend'], squirrel: false },
+  { events: ['brussel sprouts', 'ice cream', 'brushed teeth', 'computer', 'weekend'], squirrel: false },
+  { events: ['potatoes', 'candy', 'brushed teeth', 'exercise', 'weekend', 'dentist'], squirrel: false },
+  { events: ['brussel sprouts', 'pudding', 'brushed teeth', 'running', 'weekend'], squirrel: false },
+  { events: ['pizza', 'brushed teeth', 'computer', 'work', 'touched tree'], squirrel: false },
+  { events: ['bread', 'beer', 'brushed teeth', 'cycling', 'work'], squirrel: false },
+  { events: ['cauliflower', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['pizza', 'brushed teeth', 'cycling', 'work'], squirrel: false },
+  { events: ['lasagna', 'nachos', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['brushed teeth', 'weekend', 'touched tree'], squirrel: false },
+  { events: ['lettuce', 'brushed teeth', 'television', 'weekend'], squirrel: false },
+  { events: ['spaghetti', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['brushed teeth', 'computer', 'work'], squirrel: false },
+  { events: ['lettuce', 'nachos', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['carrot', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['brushed teeth', 'work'], squirrel: false },
+  { events: ['cauliflower', 'reading', 'weekend'], squirrel: false },
+  { events: ['bread', 'brushed teeth', 'weekend'], squirrel: false },
+  { events: ['lasagna', 'brushed teeth', 'exercise', 'work'], squirrel: false },
+  { events: ['spaghetti', 'brushed teeth', 'reading', 'work'], squirrel: false },
+  { events: ['carrot', 'ice cream', 'brushed teeth', 'television', 'work'], squirrel: false },
+  { events: ['spaghetti', 'nachos', 'work'], squirrel: false },
+  { events: ['cauliflower', 'ice cream', 'brushed teeth', 'cycling', 'work'], squirrel: false },
+  { events: ['spaghetti', 'peanuts', 'computer', 'weekend'], squirrel: true },
+  { events: ['potatoes', 'ice cream', 'brushed teeth', 'computer', 'weekend'], squirrel: false },
+  { events: ['potatoes', 'ice cream', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['peanuts', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['potatoes', 'exercise', 'work'], squirrel: false },
+  { events: ['pizza', 'ice cream', 'computer', 'work'], squirrel: false },
+  { events: ['lasagna', 'ice cream', 'work'], squirrel: false },
+  { events: ['cauliflower', 'candy', 'reading', 'weekend'], squirrel: false },
+  { events: ['lasagna', 'nachos', 'brushed teeth', 'running', 'weekend'], squirrel: false },
+  { events: ['potatoes', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['carrot', 'work'], squirrel: false },
+  { events: ['pizza', 'beer', 'work', 'dentist'], squirrel: false },
+  { events: ['lasagna', 'pudding', 'cycling', 'work'], squirrel: false },
+  { events: ['spaghetti', 'brushed teeth', 'reading', 'work'], squirrel: false },
+  { events: ['spaghetti', 'pudding', 'television', 'weekend'], squirrel: false },
+  { events: ['bread', 'brushed teeth', 'exercise', 'weekend'], squirrel: false },
+  { events: ['lasagna', 'peanuts', 'work'], squirrel: true },
+  { events: ['pizza', 'work'], squirrel: false },
+  { events: ['potatoes', 'exercise', 'work'], squirrel: false },
+  { events: ['brushed teeth', 'exercise', 'work'], squirrel: false },
+  { events: ['spaghetti', 'brushed teeth', 'television', 'work'], squirrel: false },
+  { events: ['pizza', 'cycling', 'weekend'], squirrel: false },
+  { events: ['carrot', 'brushed teeth', 'weekend'], squirrel: false },
+  { events: ['carrot', 'beer', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['pizza', 'peanuts', 'candy', 'work'], squirrel: true },
+  { events: ['carrot', 'peanuts', 'brushed teeth', 'reading', 'work'], squirrel: false },
+  { events: ['potatoes', 'peanuts', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['carrot', 'nachos', 'brushed teeth', 'exercise', 'work'], squirrel: false },
+  { events: ['pizza', 'peanuts', 'brushed teeth', 'television', 'weekend'], squirrel: false },
+  { events: ['lasagna', 'brushed teeth', 'cycling', 'weekend'], squirrel: false },
+  { events: ['cauliflower', 'peanuts', 'brushed teeth', 'computer', 'work', 'touched tree'], squirrel: false },
+  { events: ['lettuce', 'brushed teeth', 'television', 'work'], squirrel: false },
+  { events: ['potatoes', 'brushed teeth', 'computer', 'work'], squirrel: false },
+  { events: ['bread', 'candy', 'work'], squirrel: false },
+  { events: ['potatoes', 'nachos', 'work'], squirrel: false },
+  { events: ['carrot', 'pudding', 'brushed teeth', 'weekend'], squirrel: false },
+  { events: ['carrot', 'brushed teeth', 'exercise', 'weekend', 'touched tree'], squirrel: false },
+  { events: ['brussel sprouts', 'running', 'work'], squirrel: false },
+  { events: ['brushed teeth', 'work'], squirrel: false },
+  { events: ['lettuce', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['candy', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['brussel sprouts', 'brushed teeth', 'computer', 'work'], squirrel: false },
+  { events: ['bread', 'brushed teeth', 'weekend'], squirrel: false },
+  { events: ['cauliflower', 'brushed teeth', 'weekend'], squirrel: false },
+  { events: ['spaghetti', 'candy', 'television', 'work', 'touched tree'], squirrel: false },
+  { events: ['carrot', 'pudding', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['lettuce', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['carrot', 'ice cream', 'brushed teeth', 'cycling', 'work'], squirrel: false },
+  { events: ['pizza', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['spaghetti', 'peanuts', 'exercise', 'weekend'], squirrel: true },
+  { events: ['bread', 'beer', 'computer', 'weekend', 'touched tree'], squirrel: false },
+  { events: ['brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['lettuce', 'peanuts', 'brushed teeth', 'work', 'touched tree'], squirrel: false },
+  { events: ['lasagna', 'brushed teeth', 'television', 'work'], squirrel: false },
+  { events: ['cauliflower', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['carrot', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['carrot', 'reading', 'weekend'], squirrel: false },
+  { events: ['carrot', 'peanuts', 'reading', 'weekend'], squirrel: true },
+  { events: ['potatoes', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['lasagna', 'ice cream', 'work', 'touched tree'], squirrel: false },
+  { events: ['cauliflower', 'peanuts', 'brushed teeth', 'cycling', 'work'], squirrel: false },
+  { events: ['pizza', 'brushed teeth', 'running', 'work'], squirrel: false },
+  { events: ['lettuce', 'brushed teeth', 'work'], squirrel: false },
+  { events: ['bread', 'brushed teeth', 'television', 'weekend'], squirrel: false },
+  { events: ['cauliflower', 'peanuts', 'brushed teeth', 'weekend'], squirrel: false },
+];
+
+function phi([n00,n01,n10,n11]) {
+	return (n11*n00-n10*n01) / 
+		Math.sqrt((n10+n11)*(n00+n01)*(n01+n11)*(n00+n10));
+}
+
+function tableFor(event, journal) {
+	let table = [0,0,0,0];
+	for(let i = 0; i < journal.length; i++) {
+		let entry = journal[i], index = 0;
+		if(entry.events.includes(event)) index += 1;
+		if(entry.squirrel) index += 2;
+		table[index] += 1;
+	}
+	return table;
+}
+
+function journalEvents(journal) {
+	let events = [];
+	for(let entry of journal) {
+		for(let event of entry.events) {
+			if(!events.includes(event)) {
+				events.push(event);
+			}
+		}
+	}
+	return events;
+}
+
+for (let event of journalEvents(JOURNAL)) {
+	let correlation = phi(tableFor(event, JOURNAL));
+	if(correlation > 0.1 || correlation < -0.1) {
+		console.log(event + " : ", correlation);
+	}
+}
+
+for(const entry of JOURNAL) {
+	if(entry.events.includes('peanuts') && !entry.events.includes('brushed teeth')) {
+		entry.events.push("peanut teeth");
+	}
+}
+
+console.log(phi(tableFor("peanut teeth", JOURNAL)))
+
+
+
+
+
+
+

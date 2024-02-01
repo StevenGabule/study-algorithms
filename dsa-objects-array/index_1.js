@@ -71,24 +71,52 @@ function largestOfFour(arrOfNumbers) {
 	return largeNumbers;
 }
 
-console.log(confirmEnding("Bastian", "n")) //  should return true.
-console.log(confirmEnding("Connor", "n") ); // should return false.
-console.log(confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
-console.log(largestOfFour([
-		[4, 9, 1, 3], 
-		[13, 35, 18, 26], 
-		[32, 35, 97, 39], 
-		[1000000, 1001, 857, 1]
-	]) //should return [9, 35, 97, 1000000].
-);
-console.log(confirmEnding("He has to give me a new name", "name")) // should return true.
-console.log(confirmEnding("Open sesame", "same")); // should return true.
-console.log(confirmEnding("Open sesame", "pen")); // should return false.
-console.log(confirmEnding("If you want to save our world, you must hurry. We dont know how much longer we can withstand the nothing", "mountain")); // should return false.
-// t t f f
-console.log('hello wor ld'.endsWith('ld'));
-console.log('--------------------------------');
-console.log(confirmEndingSubstr("Bastian", "n"));
-console.log(confirmEndingSubstr("Connor", "n") ); // should return false.
-console.log(confirmEndingSubstr("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
-console.log(confirmEnding("Open sesame", "same")); // should return true.
+// console.log(confirmEnding("Bastian", "n")) //  should return true.
+// console.log(confirmEnding("Connor", "n") ); // should return false.
+// console.log(confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
+// console.log(largestOfFour([
+// 		[4, 9, 1, 3], 
+// 		[13, 35, 18, 26], 
+// 		[32, 35, 97, 39], 
+// 		[1000000, 1001, 857, 1]
+// 	]) //should return [9, 35, 97, 1000000].
+// );
+// console.log(confirmEnding("He has to give me a new name", "name")) // should return true.
+// console.log(confirmEnding("Open sesame", "same")); // should return true.
+// console.log(confirmEnding("Open sesame", "pen")); // should return false.
+// console.log(confirmEnding("If you want to save our world, you must hurry. We dont know how much longer we can withstand the nothing", "mountain")); // should return false.
+// // t t f f
+// console.log('hello wor ld'.endsWith('ld'));
+// console.log('--------------------------------');
+// console.log(confirmEndingSubstr("Bastian", "n"));
+// console.log(confirmEndingSubstr("Connor", "n") ); // should return false.
+// console.log(confirmEndingSubstr("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
+// console.log(confirmEnding("Open sesame", "same")); // should return true.
+
+
+// ** Reverse a String in JavaScript
+// Algorithm Challenge
+// Reverse the provided string.
+// You may need to turn the string into an array 
+// before you can reverse it.
+// Your result must be a string.
+function reverseStr(param) {
+	let revStr = [];
+	for (const st of param) {
+		revStr.unshift(st)
+	}
+	return revStr.join('');
+}
+
+function reverseAStringUsingRecursive(str) {
+	if(str === "") return "";
+	else return reverseAStringUsingRecursive(str.substr(1)) + str.charAt(0)
+}
+
+// console.log(reverseStr('hello'));
+// console.log(reverseStr('Howdy'));
+// console.log(reverseStr('Greetings from Earth'));
+
+console.log(reverseAStringUsingRecursive('hello'));
+console.log(reverseAStringUsingRecursive('Howdy'));
+console.log(reverseAStringUsingRecursive('Greetings from Earth'));

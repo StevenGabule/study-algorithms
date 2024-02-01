@@ -40,9 +40,46 @@ function three(string, times) {
   return times > 0 ? string.repeat(times) : '';
 }
 
-console.log(three('*', 3));
-console.log(three('abc', 3));
-console.log(three('abc', 4)); // should return "abcabcabcabc".
-console.log(three('abc', 1)); // should return "abc".
-console.log(three('*', 8)); //should return "********".
-console.log(three('abc', -2)); // should return "".
+// console.log(three('*', 3));
+// console.log(three('abc', 3));
+// console.log(three('abc', 4)); // should return "abcabcabcabc".
+// console.log(three('abc', 1)); // should return "abc".
+// console.log(three('*', 8)); //should return "********".
+// console.log(three('abc', -2)); // should return "".
+
+// The Algorithm Challenge Description
+// Check if a string (first argument, str) ends with the 
+// given target string (second argument, target).
+function confirmEnding(string, target) {
+
+	if(target.length > 1) {
+		const arrStr = string.split(' ');
+		return arrStr[arrStr.length - 1].includes(target);
+	}
+	return string[string.length - 1] === target;
+}
+
+function largestOfFour(arrOfNumbers) {
+	const largeNumbers = [];
+	for (const arrNums of arrOfNumbers) {
+		largeNumbers.push(Math.max(...arrNums));
+	}
+	return largeNumbers;
+}
+
+console.log(confirmEnding("Bastian", "n")) //  should return true.
+console.log(confirmEnding("Connor", "n") ); // should return false.
+console.log(confirmEnding("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
+console.log(largestOfFour([
+		[4, 9, 1, 3], 
+		[13, 35, 18, 26], 
+		[32, 35, 97, 39], 
+		[1000000, 1001, 857, 1]
+	]) //should return [9, 35, 97, 1000000].
+);
+console.log(confirmEnding("He has to give me a new name", "name")) // should return true.
+console.log(confirmEnding("Open sesame", "same")); // should return true.
+console.log(confirmEnding("Open sesame", "pen")); // should return false.
+console.log(confirmEnding("If you want to save our world, you must hurry. We dont know how much longer we can withstand the nothing", "mountain")); // should return false.
+// t t f f
+console.log('hello wor ld'.endsWith('ld'));

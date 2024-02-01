@@ -59,6 +59,10 @@ function confirmEnding(string, target) {
 	return string[string.length - 1] === target;
 }
 
+function confirmEndingSubstr(string, target) {
+	return string.substr(-target.length) === target;
+}
+
 function largestOfFour(arrOfNumbers) {
 	const largeNumbers = [];
 	for (const arrNums of arrOfNumbers) {
@@ -83,3 +87,8 @@ console.log(confirmEnding("Open sesame", "pen")); // should return false.
 console.log(confirmEnding("If you want to save our world, you must hurry. We dont know how much longer we can withstand the nothing", "mountain")); // should return false.
 // t t f f
 console.log('hello wor ld'.endsWith('ld'));
+console.log('--------------------------------');
+console.log(confirmEndingSubstr("Bastian", "n"));
+console.log(confirmEndingSubstr("Connor", "n") ); // should return false.
+console.log(confirmEndingSubstr("Walking on water and developing software from a specification are easy if both are frozen", "specification")); //should return false.
+console.log(confirmEnding("Open sesame", "same")); // should return true.

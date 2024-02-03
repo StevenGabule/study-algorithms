@@ -117,6 +117,86 @@ function reverseAStringUsingRecursive(str) {
 // console.log(reverseStr('Howdy'));
 // console.log(reverseStr('Greetings from Earth'));
 
-console.log(reverseAStringUsingRecursive('hello'));
-console.log(reverseAStringUsingRecursive('Howdy'));
-console.log(reverseAStringUsingRecursive('Greetings from Earth'));
+// console.log(reverseAStringUsingRecursive('hello'));
+// console.log(reverseAStringUsingRecursive('Howdy'));
+// console.log(reverseAStringUsingRecursive('Greetings from Earth'));
+
+// is palindrome
+// Algorithm Challenge
+// Return true if the given string is a palindrome. Otherwise, return false.
+
+// Provided test cases
+// ** palindrome(“race car”) should return true
+// ** palindrome(“not a palindrome”) should return false
+// ** palindrome(“A man, a plan, a canal. Panama”) should return true
+// ** palindrome(“never odd or even”) should return true
+// ** palindrome(“nope”) should return false
+// ** palindrome(“almostomla”) should return false
+// ** palindrome(“My age is 0, 0 si ega ym.”) should return true
+// ** palindrome(“1 eye for of 1 eye.”) should return false
+// ** palindrome(“0_0 (: /-\ :) 0–0”) should return true
+function isPalindrome(param) {
+	// const re = /[.,-_\s]/g;
+	// \W removes all non-alphanumeric characters:
+	// \W matches any non-word character
+	// \W is equivalent to [^A-Za-z0–9_]
+	// \W matches anything that is not enclosed in the brackets
+	const re = /[\W_]/g;
+	let reverseWords = '';
+	for (let i = param.length-1; i > -1; i--) {
+		reverseWords += param[i].toLowerCase();
+	}
+	param = param.split(re).map(p => p.toLowerCase()).join('')
+	reverseWords = reverseWords.split(re).map(p => p.toLowerCase()).join('')
+	return param == reverseWords;
+}  
+
+
+
+function palindrome(str) {
+  // Step 1. Lowercase the string and use the RegExp to remove unwanted characters from it
+  var re = /[\W_]/g; // or var re = /[^A-Za-z0-9]/g;
+  
+  var lowRegStr = str.toLowerCase().replace(re, '');
+  // str.toLowerCase() = "A man, a plan, a canal. Panama".toLowerCase() 
+	// = "a man, a plan, a canal. panama"
+  // str.replace(/[\W_]/g, '') = "a man, a plan, a canal. panama".replace(/[\W_]/g, '') = 
+	// "amanaplanacanalpanama"
+  // var lowRegStr = "amanaplanacanalpanama";
+     
+  // Step 2. Use the same chaining methods with built-in functions from the previous article 'Three Ways to Reverse a String in JavaScript'
+  var reverseStr = lowRegStr.split('').reverse().join(''); 
+  // lowRegStr.split('') = "amanaplanacanalpanama".split('') = ["a", "m", "a", "n", "a", "p", "l", "a", "n", "a", "c", "a", "n", "a", "l", "p", "a", "n", "a", "m", "a"]
+  // ["a", "m", "a", "n", "a", "p", "l", "a", "n", "a", "c", "a", "n", "a", "l", "p", "a", "n", "a", "m", "a"].reverse() = ["a", "m", "a", "n", "a", "p", "l", "a", "n", "a", "c", "a", "n", "a", "l", "p", "a", "n", "a", "m", "a"]
+  // ["a", "m", "a", "n", "a", "p", "l", "a", "n", "a", "c", "a", "n", "a", "l", "p", "a", "n", "a", "m", "a"].join('') = "amanaplanacanalpanama"
+  // So, "amanaplanacanalpanama".split('').reverse().join('') = "amanaplanacanalpanama";
+  // And, var reverseStr = "amanaplanacanalpanama";
+   
+  // Step 3. Check if reverseStr is strictly equals to lowRegStr and return a Boolean
+  return reverseStr === lowRegStr; // "amanaplanacanalpanama" === "amanaplanacanalpanama"? => true
+}
+
+function palindrome2(str) {
+	var re = /[^A-Za-z0-9]/g;
+	str = str.toLowerCase().replace(re, '');
+	var len = str.length;
+	for (var i = 0; i < len/2; i++) {
+		if (str[i] !== str[len - 1 - i]) {
+				return false;
+		}
+	}
+	return true;
+ }
+ 
+palindrome("A man, a plan, a canal. Panama");
+
+console.log("race car", isPalindrome("race car")); // t
+console.log("not a palindrome", isPalindrome("not a palindrome")); // f
+console.log("A man, a plan, a canal. Panama", isPalindrome("A man, a plan, a canal. Panama")); // should return true
+console.log("1 eye for of 1 eye.", isPalindrome("1 eye for of 1 eye.")); // f
+console.log("never odd or even", isPalindrome("never odd or even")); // t
+console.log("nope", isPalindrome("nope")); // f
+console.log("almostomla", isPalindrome("almostomla")); // f
+console.log("My age is 0, 0 si ega ym.", isPalindrome("My age is 0, 0 si ega ym.")); // t
+console.log(`0_0 (: /-\ :) 0–0`, isPalindrome(`0_0 (: /-\ :) 0–0`)); // t
+// 

@@ -50,7 +50,7 @@ function checkMonotonic(nums) {
 			if (nums[i + 1] !== nums[i]) return false;
 		}
 	} else if (first < last) {
-		// non-decresing
+		// non-decreasing
 		for (let i = 0; i < nums.length - 1; i++) {
 			if (nums[i + 1] < nums[i]) return false;
 		}
